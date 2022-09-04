@@ -3,6 +3,9 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
+import {getCookie, setCookie} from 'cookies-next';
+
+
 
 interface Premier {
   id: number;
@@ -634,7 +637,14 @@ const Home: NextPage = () => {
 
 export default Home
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps({req, res}:{req:any, res:any}) {
+
+  const voterIdCookie = getCookie('voter_id', {req, res});
+  console.log(`voterIdCookie SSR`, voterIdCookie)
+  if (!voterIdCookie) {
+    setCookie('voter_id', Math.random().toString(36).substring(2, 10), {req, res, httpOnly: true});
+  }
+
   return {
     props: {}, // will be passed to the page component as props
   }
