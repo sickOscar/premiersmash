@@ -493,6 +493,19 @@ const Home: NextPage = () => {
             {premiers.find(p => p.id === gameEnded)?.name}
           </p>
 
+          <div className={styles.shareBox}>
+            <a className="twitter-share-button"
+               href={`https://twitter.com/intent/tweet?text=Ho scelto il primo ministro: sarà ${premiers.find(p => p.id === gameEnded)?.name}. E tu cosa sceglieresti%3F&url=https://${encodeURI(window.location.hostname)}`}
+               target="_blank"
+               rel="noreferrer"
+            >
+              <img src="/twitter.svg" alt="twitter" style={{
+                width: `30px`,
+                height: `30px`
+              }}/>
+            </a>
+          </div>
+
           <button className={styles.btn} onClick={() => {
             window.location.href = `/`
           }}>
