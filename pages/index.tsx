@@ -424,11 +424,17 @@ const Home: NextPage = () => {
       {!gameStarted && (
         <>
 
+          <video autoPlay muted loop id={'bgvideo'} className={styles.bgvideo}>
+            <source src="/parlamento.mp4" type="video/mp4" />
+          </video>
+
           <div className={styles.start}>
 
             <div className={styles.startText}>
-              <h1>Premier 2022</h1>
-              <p>Chi sarebbe più adatto a diventare primo ministro italiano?</p>
+              <h1 className={styles.title}>Premier 2022</h1>
+              <p style={{
+                fontSize: '26px',
+              }}>Chi sarebbe più adatto a diventare primo ministro italiano?</p>
 
               <button className={styles.btn} onClick={() => {
                 setGameStarted(true)
