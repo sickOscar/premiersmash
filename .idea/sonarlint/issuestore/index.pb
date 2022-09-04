@@ -7,5 +7,3 @@ B
 pages/api/hello.ts,1/a/1a90d01be90e8d5774c682e9d222e618e3273e9b
 9
 	yarn.lock,5/3/53585a096fe3a3b96321113856ae62602995a33b
-<
-package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
