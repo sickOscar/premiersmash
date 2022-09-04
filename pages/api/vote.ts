@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { NextRequest } from 'next/server'
 import {getClientIp} from 'request-ip';
 import sqlite3 from 'sqlite3';
 import {promisify} from "util";
@@ -30,7 +29,8 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
     WHERE (
       (winner = ? AND loser = ?) 
      )`;
-  const resultWhereWinnerIs1 = await allAsync(sqlWhereWinnerIs1, [req.query.candidate1, req.query.candidate2]);
+  // @ts-ignore
+  const resultWhereWinnerIs1:any = await allAsync(sqlWhereWinnerIs1, [req.query.candidate1, req.query.candidate2]);
   console.log(`resultWhereWinnerIs1`, resultWhereWinnerIs1)
   
   
@@ -39,7 +39,8 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
     WHERE (
       (winner = ? AND loser = ?)
       )`;
-  const resultWhereWinnerIs2 = await allAsync(sqlWhereWinnerIs2, [req.query.candidate2, req.query.candidate1]);
+  // @ts-ignore
+  const resultWhereWinnerIs2:any = await allAsync(sqlWhereWinnerIs2, [req.query.candidate2, req.query.candidate1]);
   
   const response = {
     votesFor1: resultWhereWinnerIs1[0].count,
@@ -47,7 +48,7 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
   }
   
   console.log(`response`, response)
-  
+
   db.close();
 
   res.status(200).json(response)
@@ -74,6 +75,7 @@ async function handleVotePost(req: NextApiRequest, res: NextApiResponse) {
   console.log(`created`)
 
   const sql = `INSERT INTO votes (ip, winner, loser) VALUES (?, ?, ?)`;
+  // @ts-ignore
   await runAsync(sql, [ip, req.body.winner, req.body.loser]);
 
   db.close();
