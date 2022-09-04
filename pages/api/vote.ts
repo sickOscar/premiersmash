@@ -31,9 +31,7 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
      )`;
   // @ts-ignore
   const resultWhereWinnerIs1:any = await allAsync(sqlWhereWinnerIs1, [req.query.candidate1, req.query.candidate2]);
-  console.log(`resultWhereWinnerIs1`, resultWhereWinnerIs1)
-  
-  
+
   const sqlWhereWinnerIs2 = `
     SELECT COUNT(*) as count FROM votes
     WHERE (
@@ -47,8 +45,6 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
     votesFor2: resultWhereWinnerIs2[0].count
   }
   
-  console.log(`response`, response)
-
   db.close();
 
   res.status(200).json(response)
@@ -71,8 +67,6 @@ async function handleVotePost(req: NextApiRequest, res: NextApiResponse) {
   );`;
 
   await runAsync(create);
-
-  console.log(`created`)
 
   const sql = `INSERT INTO votes (ip, winner, loser) VALUES (?, ?, ?)`;
   // @ts-ignore

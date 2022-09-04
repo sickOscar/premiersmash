@@ -493,6 +493,12 @@ const Home: NextPage = () => {
             {premiers.find(p => p.id === gameEnded)?.name}
           </p>
 
+          <button className={styles.btn} onClick={() => {
+            window.location.href = `/`
+          }}>
+            Gioca ancora
+          </button>
+
 
         </div>
       )}
