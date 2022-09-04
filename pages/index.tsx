@@ -194,6 +194,7 @@ const Home: NextPage = () => {
 
   const refVoteOne = useRef<HTMLDivElement>(null)
   const refVoteTwo = useRef<HTMLDivElement>(null)
+  const refGameProgress = useRef<HTMLDivElement>(null)
 
   const router = useRouter()
 
@@ -261,6 +262,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     console.log('update progresses')
     updateProgressBar()
+    updateProgress();
   }, [progresses])
 
   const chooseOne = (e: any) => {
@@ -327,6 +329,16 @@ const Home: NextPage = () => {
 
     setProgresses([width1, width2]);
 
+  }
+
+  const updateProgress = () => {
+    setTimeout(() => {
+      if(refGameProgress.current) {
+        const percentProgress = (excluded.length / premiers.length) * 100;
+        refGameProgress.current.style.width = `${percentProgress}%`;
+      }
+
+    }, 100)
   }
 
   const updateProgressBar = () => {
@@ -488,6 +500,9 @@ const Home: NextPage = () => {
       {gameStarted && !gameEnded && <>
         <div className={styles.gameHeader}>
           <p>Clicca e scegli il PRIMO MINISTRO </p>
+          <div className={styles.gameProgressContainer}>
+            <div className={styles.gameProgress} ref={refGameProgress}></div>
+          </div>
         </div>
         <main className={styles.main}>
 
@@ -520,16 +535,17 @@ const Home: NextPage = () => {
 
         {selectionDone && <div className={styles.selectionDone}>
 
-          <p>Hai votato {choices[fixedChoiceIndex].name}</p>
+          <p>Hai votato <span className={styles.matchWinner}>{choices[fixedChoiceIndex].name}</span></p>
 
           <p>
-            Il {
+            Il <span className={styles.matchPercent}>{
             fixedChoiceIndex === 0 ?
               Math.round(((pollResult.votesFor1 + 1) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100)
               : Math.round(((pollResult.votesFor2 + 1) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100)
 
-          }% degli italiani
-            preferirebbe {choices[fixedChoiceIndex].name} a {fixedChoiceIndex === 0 ? choices[1].name : choices[0].name}
+          }%</span><br/>
+            <small>degli italiani preferirebbe</small>
+            <br/>{choices[fixedChoiceIndex].name} a {fixedChoiceIndex === 0 ? choices[1].name : choices[0].name}
           </p>
 
           <div className={styles.progress}>
