@@ -1,7 +1,7 @@
 import type {NextPage} from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
 
 interface Premier {
@@ -225,6 +225,11 @@ const Home: NextPage = () => {
 
   const [selectionDone, setSelectionDone] = useState<boolean>(false);
 
+  const [progresses, setProgresses] = useState<number[]>([]);
+
+  const refVoteOne = useRef<HTMLDivElement>(null)
+  const refVoteTwo = useRef<HTMLDivElement>(null)
+
   const router = useRouter()
 
   const pickRandom = (arr: Premier[]) => {
@@ -288,6 +293,11 @@ const Home: NextPage = () => {
     }
   }
 
+  useEffect(() => {
+    console.log('update progresses')
+    updateProgressBar()
+  }, [progresses])
+
   const chooseOne = (e: any) => {
     setFixedChoiceIndex(0);
 
@@ -311,6 +321,12 @@ const Home: NextPage = () => {
 
     setNextChoice(newRandom);
     setSelectionDone(true);
+
+    const width1 = ((pollResult.votesFor1 + 1) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100
+    const width2 = ((pollResult.votesFor2) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100
+    console.log(`width1, width2`, width1, width2)
+    setProgresses([width1, width2]);
+
 
   }
 
@@ -338,13 +354,35 @@ const Home: NextPage = () => {
     setNextChoice(newRandom);
     setSelectionDone(true);
 
+    const totalVotes = pollResult.votesFor1 + pollResult.votesFor2 + 1;
+
+    const width1 = ((pollResult.votesFor1) / totalVotes) * 100
+    const width2 = ((pollResult.votesFor2 + 1) / totalVotes) * 100
+    console.log(`width1, width2`, width1, width2)
+
+    setProgresses([width1, width2]);
+
+  }
+
+  const updateProgressBar = () => {
+
+    setTimeout(() => {
+      // width: `${Math.round(((pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0)) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100)}%`,
+      if (refVoteOne.current) {
+        refVoteOne.current.style.width = `${Math.round(progresses[0])}%`
+      }
+
+      if (refVoteTwo.current) {
+        refVoteTwo.current.style.width = `${Math.round(progresses[1])}%`
+      }
+    }, 200)
+
+
   }
 
   useEffect(() => {
 
     const query = router.query;
-
-    console.log(`query`, query)
 
     let first, second;
 
@@ -429,7 +467,7 @@ const Home: NextPage = () => {
               <h1>Premier 2022</h1>
               <p>Chi sarebbe più adatto a diventare primo ministro italiano?</p>
 
-              <button onClick={() => {
+              <button className={styles.btn} onClick={() => {
                 setGameStarted(true)
                 updateRoute(choices[0], choices[1]);
               }}>Inizia
@@ -499,17 +537,65 @@ const Home: NextPage = () => {
           <p>
             Il {
             fixedChoiceIndex === 0 ?
-              Math.round(((pollResult.votesFor1 + 1) / (pollResult.votesFor1 + pollResult.votesFor2 + 1) ) * 100)
+              Math.round(((pollResult.votesFor1 + 1) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100)
               : Math.round(((pollResult.votesFor2 + 1) / (pollResult.votesFor1 + pollResult.votesFor2 + 1)) * 100)
 
-            }% degli italiani
+          }% degli italiani
             preferirebbe {choices[fixedChoiceIndex].name} a {fixedChoiceIndex === 0 ? choices[1].name : choices[0].name}
           </p>
 
-          <button onClick={() => {
-            continueGame();
-          }}>Continua
-          </button>
+          <div className={styles.progress}>
+            <div className={styles.progressContainer}>
+
+              <p className={styles.numberOfVotes }>
+                {pollResult.votesFor1  + (fixedChoiceIndex === 0 ? 1 : 0)}
+                {pollResult.votesFor1  + (fixedChoiceIndex === 0 ? 1 : 0) !== 1 ? ` voti` : ` voto`}
+              </p>
+              <div className={styles.progressBox} ref={refVoteOne} style={{
+                backgroundColor: `rgba(0, 146, 70, 0.7)`,
+                right: 0
+              }}>
+              </div>
+            </div>
+            <div style={{
+              backgroundColor: `rgb(255, 255, 255)`,
+              height: `100%`,
+              width: `100px`
+            }}></div>
+            <div className={styles.progressContainer}>
+
+              <p className={styles.numberOfVotes}>
+                {pollResult.votesFor2 + (fixedChoiceIndex === 1 ? 1 : 0)}
+                {pollResult.votesFor2 + (fixedChoiceIndex === 1 ? 1 : 0) !== 1 ? ` voti` : ` voto`}
+              </p>
+              <div className={styles.progressBox} ref={refVoteTwo} style={{
+                backgroundColor: `rgba(206, 43, 55, 0.7)`,
+              }}>
+              </div>
+
+            </div>
+          </div>
+
+          <div className={styles.shareBox}>
+            <a className="twitter-share-button"
+               href={`https://twitter.com/intent/tweet?text=Ho preferito ${choices[fixedChoiceIndex].name} a ${choices[fixedChoiceIndex === 0 ? 1 : 0].name} come premier italiano. E tu cosa sceglieresti%3F&url=${encodeURI(window.location.href)}`}
+               target="_blank">
+              <img src="/twitter.svg" alt="twitter" style={{
+                width: `30px`,
+                height: `30px`
+              }}/>
+            </a>
+          </div>
+
+
+
+          <div>
+            <button className={styles.btn} onClick={() => {
+              continueGame();
+            }}>Continua
+            </button>
+          </div>
+
 
         </div>}
 
@@ -517,7 +603,8 @@ const Home: NextPage = () => {
 
 
       <footer className={styles.footer}>
-        <p>made with 🔨 by <a href="" target="_blank">@sickOscar</a> and <a href="" target="_blank">@gpericol</a></p>
+        <p>made with 🔨 by <a href="https://github.com/sickOscar" target="_blank">@sickOscar</a> and <a
+          href="https://github.com/gpericol" target="_blank">@gpericol</a></p>
       </footer>
 
     </div>
@@ -526,7 +613,7 @@ const Home: NextPage = () => {
 
 export default Home
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context: any) {
   return {
     props: {}, // will be passed to the page component as props
   }

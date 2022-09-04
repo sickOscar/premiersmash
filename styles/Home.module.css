@@ -25,7 +25,7 @@
   color: #fff;
 }
 
-.start button {
+.btn {
   position: relative;
   margin: 0 auto;
   border: 0;
@@ -33,6 +33,7 @@
   height: 2em;
   font-size: 30px;
   background: white;
+  cursor: pointer;
 }
 
 .side {
@@ -146,10 +147,48 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+}
+
+.selectionDone .progress {
+  height: 30px;
+  margin: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectionDone .progress div.progressContainer {
+  /*background-color: rgba(255, 255, 255, 0.2);*/
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.progressBox {
+  position: absolute;
+  width: 0;
+  transition: width 1s;
+  height: 100%;
+  top: 0;
+  margin: 0;
+  z-index: -1;
+}
+
+.selectionDone .progress div.progressContainer .numberOfVotes {
+  padding: 0;
+  margin: 0 auto;
+
+}
+
+.shareBox {
+  margin-bottom: 20px;
 }
 
 .selectionDone p {
   color: #fff;
-
+  font-size: 1.5em;
 }
 
