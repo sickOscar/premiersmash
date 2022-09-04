@@ -130,11 +130,6 @@ const premiers: Premier[] = [
     image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Samantha_Cristoforetti_portrait.jpg",
   },
   {
-    id: 31,
-    name: "Jennifer Lopez",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/07/Jennifer_Lopez_at_GLAAD_Media_Awards_%28cropped%29.jpg",
-  },
-  {
     id: 32,
     name: "Michelle Hunziker",
     image: "https://upload.wikimedia.org/wikipedia/commons/5/5f/MJK62794_Michelle_Hunziker_%28Frankfurter_Buchmesse_2018%29.jpg",
