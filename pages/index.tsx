@@ -579,7 +579,9 @@ const Home: NextPage = () => {
           <div className={styles.shareBox}>
             <a className="twitter-share-button"
                href={`https://twitter.com/intent/tweet?text=Ho preferito ${choices[fixedChoiceIndex].name} a ${choices[fixedChoiceIndex === 0 ? 1 : 0].name} come premier italiano. E tu cosa sceglieresti%3F&url=${encodeURI(window.location.href)}`}
-               target="_blank">
+               target="_blank"
+               rel="noreferrer"
+            >
               <img src="/twitter.svg" alt="twitter" style={{
                 width: `30px`,
                 height: `30px`
@@ -603,8 +605,8 @@ const Home: NextPage = () => {
 
 
       <footer className={styles.footer}>
-        <p>made with 🔨 by <a href="https://github.com/sickOscar" target="_blank">@sickOscar</a> and <a
-          href="https://github.com/gpericol" target="_blank">@gpericol</a></p>
+        <p>made with 🔨 by <a href="https://github.com/sickOscar" target="_blank" rel="noreferrer">@sickOscar</a> and <a
+          href="https://github.com/gpericol" target="_blank" rel="noreferrer">@gpericol</a></p>
       </footer>
 
     </div>
