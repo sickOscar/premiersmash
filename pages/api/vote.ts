@@ -48,8 +48,8 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
   const resultWhereWinnerIs2:any = await client.query(sqlWhereWinnerIs2, [req.query.candidate2, req.query.candidate1]);
   
   const response = {
-    votesFor1: resultWhereWinnerIs1.rows[0].count,
-    votesFor2: resultWhereWinnerIs2.rows[0].count
+    votesFor1: parseInt(resultWhereWinnerIs1.rows[0].count),
+    votesFor2: parseInt(resultWhereWinnerIs2.rows[0].count)
   }
 
   res.status(200).json(response)
