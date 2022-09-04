@@ -6,6 +6,9 @@ const nextConfig = {
     domains: [
       'upload.wikimedia.org',
       'www.adnkronos.com',
+      's.yimg.com',
+      'images2.corriereobjects.it',
+      'theblondesalad.com'
     ],
   }
 }

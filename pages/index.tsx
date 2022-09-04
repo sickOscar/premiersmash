@@ -11,7 +11,6 @@ interface Premier {
   id: number;
   name: string;
   image: string;
-  wiki: string;
 }
 
 const premiers: Premier[] = [
@@ -19,193 +18,161 @@ const premiers: Premier[] = [
     id: 1,
     name: "Carlo Calenda",
     image: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Calenda-photos2_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Carlo_Calenda",
   },
   {
     id: 2,
     name: "Raffaele Fantetti",
     image: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Raffaele_Fantetti_datisenato_2018.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Raffaele_Fantetti",
   },
   {
     id: 3,
     name: "Matteo Salvini",
     image: "https://upload.wikimedia.org/wikipedia/commons/3/36/Matteo_Salvini_Viminale.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Matteo_Salvini",
   },
   {
     id: 5,
     name: "Giuseppe Conte",
     image: "https://upload.wikimedia.org/wikipedia/commons/6/60/Giuseppe_Conte_-_Foto.jpeg",
-    wiki: "https://it.wikipedia.org/wiki/Giuseppe_Conte",
   },
   {
     id: 6,
     name: "Giorgia Meloni",
     image: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Giorgia_Meloni_2022.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Giorgia_Meloni",
   },
   {
     id: 7,
     name: "Luigi Di Maio",
     image: "https://upload.wikimedia.org/wikipedia/commons/7/74/Luigi_Di_Maio_2021_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Luigi_Di_Maio",
   },
   {
     id: 8,
     name: "Sergio Mattarella",
     image: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Sergio_Mattarella_Presidente_della_Repubblica_Italiana.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Sergio_Mattarella",
   },
   {
     id: 9,
     name: "Angelo Bonelli",
     image: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Angelo_Bonelli_%282006%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Angelo_Bonelli",
   },
   {
     id: 10,
     name: "Enrico Letta",
     image: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Enrico_Letta_2022_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Enrico_Letta",
   },
   {
     id: 11,
     name: "Luigi de Magistris",
     image: "https://upload.wikimedia.org/wikipedia/commons/1/11/Luigi_de_Magistris_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Luigi_de_Magistris",
   },
   {
     id: 12,
     name: "Marco Cappato",
     image: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Marco_Cappato_all%27Europarlamento.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Marco_Cappato",
   },
   {
     id: 13,
     name: "Emma Bonino",
     image: "https://upload.wikimedia.org/wikipedia/commons/2/26/Emma_Bonino_2017_crop.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Giorgio_Napolitano",
   },
   {
     id: 14,
     name: "Antonio Pappalardo",
     image: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Pappalardo_intervista.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Antonio_Pappalardo",
   },
   {
     id: 15,
     name: "Gianluigi Paragone",
     image: "https://upload.wikimedia.org/wikipedia/commons/5/53/Gianluigi_Paragone_datisenato_2018.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Gianluigi_Paragone",
   },
   {
     id: 16,
     name: "Sara Cuinal",
     image: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Sara_Cunial_2018.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Sara_Cuinal",
   },
   {
     id: 17,
     name: "Philipp Achammer",
     image: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Achammer.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Philipp_Achammer",
   },
   {
     id: 18,
     name: "Marco Ferrando",
     image: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Marco_Ferrando.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Marco_Ferrando",
   },
   {
     id: 19,
     name: "Silvio Berlusconi",
     image: "https://upload.wikimedia.org/wikipedia/commons/d/db/Silvio_Berlusconi_May_2019.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Silvio_Berlusconi",
   },
   {
     id: 20,
     name: "Mario Adinolfi",
     image: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Mario_Adinolfi.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Mario_Adinolfi",
   },
   {
     id: 21,
     name: "Maurizio Lupi",
     image: "https://upload.wikimedia.org/wikipedia/commons/2/21/Maurizio_Lupi_Official.jpeg",
-    wiki: "https://it.wikipedia.org/wiki/Maurizio_Lupi",
-  },
-  {
-    id: 22,
-    name: "Jeff Bezos",
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Jeff_Bezos",
   },
   {
     id: 23,
     name: "Papa Francesco",
     image: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Portrait_of_Pope_Francis_%282021%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Papa_Francesco",
-  },
-  {
-    id: 24,
-    name: "Elon Musk",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Elon_Musk",
-  },
-  {
-    id: 25,
-    name: "Mark Zuckerberg",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Mark_Zuckerberg",
-  },
-  {
-    id: 26,
-    name: "Bill Gates",
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Bill_Gates",
-  },
-  {
-    id: 27,
-    name: "Keanu Reeves",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f7/Reuni%C3%A3o_com_o_ator_norte-americano_Keanu_Reeves_cropped_2_%2846806576944%29_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Keanu_Reeves",
   },
   {
     id: 28,
     name: "Gerry Scotty",
     image: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Gerry_Scotti_2010.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Gerry_Scotti",
   },
   {
     id: 29,
     name: "Samantha Cristoforetti",
     image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Samantha_Cristoforetti_portrait.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Samantha_Cristoforetti",
-  },
-  {
-    id: 30,
-    name: "Angelina Jolie",
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Angelina_Jolie_2_June_2014_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Angelina_Jolie",
   },
   {
     id: 31,
     name: "Jennifer Lopez",
     image: "https://upload.wikimedia.org/wikipedia/commons/0/07/Jennifer_Lopez_at_GLAAD_Media_Awards_%28cropped%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Jennifer_Lopez",
   },
   {
     id: 32,
     name: "Michelle Hunziker",
     image: "https://upload.wikimedia.org/wikipedia/commons/5/5f/MJK62794_Michelle_Hunziker_%28Frankfurter_Buchmesse_2018%29.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Michelle_Hunziker",
   },
   {
     id: 33,
     name: "Maria De Filippi",
     image: "https://upload.wikimedia.org/wikipedia/commons/5/56/Maria_De_Filippi_a_Sanremo_2009.jpg",
-    wiki: "https://it.wikipedia.org/wiki/Maria_De_Filippi",
+  },
+  {
+    id: 34,
+    name: "Giulia De Lellis",
+    image: "https://s.yimg.com/ny/api/res/1.2/q6X2zevwHRB4KdHphXWJbw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0NztjZj13ZWJw/https://s.yimg.com/uu/api/res/1.2/W0xENNNYr6VVSzqrV7T.eA--~B/aD02ODQ7dz0xMjAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/it/notizie_it_154/9a69230fb5aa5e3f019c1b3560f3c306"
+  },
+  {
+    id: 35,
+    name: "Fedez",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/39/Fedez_crop%2C_Grugliasco_%28TO%29%2C_2015-07-18.jpg"
+  },
+  {
+    id: 36,
+    name: "Gigi D'Alessio",
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Gigi_dAlessio.jpg",
+  },
+  {
+    id: 37,
+    name: "Gianluca Vacchi",
+    image: "https://images2.corriereobjects.it/methode_image/2022/05/27/Interni/Foto%20Interni%20-%20Trattate/gianluca-31-kweb-u33501897631136sf-656x492corriere-web-sezioni_MASTER.jpg?v=20220527093957"
+  },
+  {
+    id: 38,
+    name: "Chiara Ferragni",
+    image: "https://theblondesalad.com/wp-content/uploads/2020/09/cf-herotalent-1-1024x576.jpg"
+  },
+  {
+    id: 39,
+    name: "Il drago Smaug",
+    image: "https://upload.wikimedia.org/wikipedia/it/a/a6/Smaug.png"
   }
 ]
 
@@ -462,9 +429,7 @@ const Home: NextPage = () => {
       {!gameStarted && (
         <>
 
-
           <div className={styles.start}>
-
 
             <div className={styles.startText}>
               <h1>Premier 2022</h1>
@@ -640,7 +605,6 @@ export default Home
 export async function getServerSideProps({req, res}:{req:any, res:any}) {
 
   const voterIdCookie = getCookie('voter_id', {req, res});
-  console.log(`voterIdCookie SSR`, voterIdCookie)
   if (!voterIdCookie) {
     setCookie('voter_id', Math.random().toString(36).substring(2, 10), {req, res, httpOnly: true});
   }
