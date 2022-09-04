@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.main {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  background: #000;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.start {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+}
+
+.start button {
+  position: relative;
+  margin: 0 auto;
+  border: 0;
+  width: 10em;
+  height: 2em;
+  font-size: 30px;
+  background: white;
+}
+
+.side {
+  cursor: pointer;
+  width: 100%;
+  background-position: top center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-chosen {
+  animation: chosen 0.5s ease-in-out;
+}
+
+@keyframes chosen {
+  0% {
+    flex-basis: 0;
+  }
+  100% {
+    flex-basis: 100%;
+  }
+}
+
+.gameHeader {
+  color: #fff;
+  background-color: rgba(0,0,0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.candidateName {
+  font-size: 1.5em;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  width: 100%;
+}
+
+.startText {
+  text-align: center;
+}
+
+.bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+.gameEnded {
+  background-color: #000000;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.gameEnded p {
+  color: #fff;
+}
+
+.gameEnded .winner {
+  font-size: 3em;
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 10px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+
+.footer a {
+  color: #fff;
+}
+
+.footer p {
+  color: #b1b1b1;
+  font-size: 10px;
+}
+
+.selectionDone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.selectionDone p {
+  color: #fff;
+
+}
+
