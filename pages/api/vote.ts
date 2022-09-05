@@ -3,16 +3,17 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import {getClientIp} from 'request-ip';
 import {promisify} from "util";
 import {getCookie} from "cookies-next";
-import {Client} from "pg";
-const client = new Client({
+
+import * as Pool from 'pg-pool';
+const client = new Pool({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: parseInt(process.env.PGPORT as string),
-});
-client.connect()
-  .then(() => console.log(`Connected to database`))
+})
+
+
 
 export default async function handler(
   req: NextApiRequest,
