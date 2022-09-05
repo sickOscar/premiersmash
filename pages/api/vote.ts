@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import {getClientIp} from 'request-ip';
 import {promisify} from "util";
 import {getCookie} from "cookies-next";
+import { createDecipheriv } from "crypto";
 
 const Pool = require('pg-pool');
 const client = new Pool({
@@ -55,13 +56,24 @@ async function handleVoteGet(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function handleVotePost(req: NextApiRequest, res: NextApiResponse) {
-  const ip = getClientIp(req);
-  const voterIdCookie = getCookie('voter_id', {req, res});
   console.log(`req.body`, req.body)
-
+  const ip = getClientIp(req);
   let response;
 
   try {
+
+    const voterIdCookie = getCookie('voter_id', {req, res});
+
+    if (!voterIdCookie) {
+      return res.status(401).json({error: 'Nein!'});
+    }
+
+    const decryptedVoterId = decryptCookie(voterIdCookie as string);
+
+    if (!decryptedVoterId.startsWith(process.env.COOKIE_PREFIX as string)) {
+      throw new Error('Nice try!');
+    }
+
     const sql = `INSERT INTO votes (ip, cookie, winner, loser) VALUES ($1, $2, $3, $4)`;
     // @ts-ignore
     await client.query(sql, [ip, voterIdCookie, req.body.winner, req.body.loser]);
@@ -71,6 +83,7 @@ async function handleVotePost(req: NextApiRequest, res: NextApiResponse) {
       ip: ip
     }
   } catch(err) {
+    console.error(err)
     console.log(`Already voted for this pair`)
     response = {
       result: 'DONE',
@@ -81,4 +94,11 @@ async function handleVotePost(req: NextApiRequest, res: NextApiResponse) {
 
 
   res.status(200).json(response)
+}
+
+
+function decryptCookie(cookie: string):string {
+  const [iv, encrypted] = cookie.split(':');
+  const decipher = createDecipheriv('aes-256-ctr', process.env.COOKIE_KEY as string, Buffer.from(iv, 'hex'));
+  return decipher.update(encrypted, 'hex', 'utf8') + decipher.final('utf8');
 }

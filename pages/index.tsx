@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {getCookie, setCookie} from 'cookies-next';
-
+import {createCipheriv, randomBytes, randomFill, scrypt} from "crypto";
 
 
 interface Premier {
@@ -333,7 +333,7 @@ const Home: NextPage = () => {
 
   const updateProgress = () => {
     setTimeout(() => {
-      if(refGameProgress.current) {
+      if (refGameProgress.current) {
         const percentProgress = (excluded.length / premiers.length) * 100;
         refGameProgress.current.style.width = `${percentProgress}%`;
       }
@@ -437,7 +437,7 @@ const Home: NextPage = () => {
         <>
 
           <video autoPlay muted loop id={'bgvideo'} className={styles.bgvideo}>
-            <source src="/parlamento.mp4" type="video/mp4" />
+            <source src="/parlamento.mp4" type="video/mp4"/>
           </video>
 
           <div className={styles.start}>
@@ -551,9 +551,9 @@ const Home: NextPage = () => {
           <div className={styles.progress}>
             <div className={styles.progressContainer}>
 
-              <p className={styles.numberOfVotes }>
-                {pollResult.votesFor1  + (fixedChoiceIndex === 0 ? 1 : 0)}
-                {pollResult.votesFor1  + (fixedChoiceIndex === 0 ? 1 : 0) !== 1 ? ` voti` : ` voto`}
+              <p className={styles.numberOfVotes}>
+                {pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0)}
+                {pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0) !== 1 ? ` voti` : ` voto`}
               </p>
               <div className={styles.progressBox} ref={refVoteOne} style={{
                 backgroundColor: `rgba(0, 146, 70, 0.7)`,
@@ -594,7 +594,6 @@ const Home: NextPage = () => {
           </div>
 
 
-
           <div>
             <button className={styles.btn} onClick={() => {
               continueGame();
@@ -619,14 +618,25 @@ const Home: NextPage = () => {
 
 export default Home
 
-export async function getServerSideProps({req, res}:{req:any, res:any}) {
+export async function getServerSideProps({req, res}: { req: any, res: any }) {
 
   const voterIdCookie = getCookie('voter_id', {req, res});
   if (!voterIdCookie) {
-    setCookie('voter_id', Math.random().toString(36).substring(2, 10), {req, res, httpOnly: true});
+    const cookieValue = generateEncryptedCookie();
+    setCookie('voter_id', cookieValue, {req, res, httpOnly: true});
   }
 
   return {
     props: {}, // will be passed to the page component as props
   }
+}
+
+function generateEncryptedCookie() {
+    const algorithm = "aes-256-ctr";
+    const iv = randomBytes(16);
+    const cipher = createCipheriv(algorithm, process.env.COOKIE_KEY as string, iv);
+    const text = `${process.env.COOKIE_PREFIX as string}${randomBytes(16).toString('hex')}`;
+    const encrypted = Buffer.concat([cipher.update(text), cipher.final()]).toString('hex');
+    return `${iv.toString('hex')}:${encrypted.toString()}`;
+
 }
