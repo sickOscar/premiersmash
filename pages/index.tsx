@@ -431,6 +431,7 @@ const Home: NextPage = () => {
         <meta name="description"
               content="Chi sarebbe più adatto ad essere il presidente del consiglio del nostro grande paese?"/>
         <link rel="icon" href="/favicon.ico"/>
+        <script defer data-domain="premier2022.it" src="https://plausible.io/js/plausible.js"></script>
       </Head>
 
       {!gameStarted && (
