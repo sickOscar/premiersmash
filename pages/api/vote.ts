@@ -1,18 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {getClientIp} from 'request-ip';
-import {promisify} from "util";
 import {getCookie} from "cookies-next";
 import { createDecipheriv } from "crypto";
+import client from '../../lib/db';
 
-const Pool = require('pg-pool');
-const client = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: parseInt(process.env.PGPORT as string),
-})
 
 export default async function handler(
   req: NextApiRequest,

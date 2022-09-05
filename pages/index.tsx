@@ -5,6 +5,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {getCookie, setCookie} from 'cookies-next';
 import {createCipheriv, randomBytes, randomFill, scrypt} from "crypto";
+import Link from "next/link";
 
 
 interface Premier {
@@ -454,6 +455,12 @@ const Home: NextPage = () => {
                 updateRoute(choices[0], choices[1]);
               }}>Inizia
               </button>
+
+              <p>
+                <Link href={'/classifica'}>
+                  Vedi i risultati
+                </Link>
+              </p>
 
             </div>
 

@@ -1,0 +1,37 @@
+.ranking {
+  margin:0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.title {
+  text-align: center;
+}
+
+.ranking table {
+  margin-top: 40px;
+  /* border: 1px solid #343a40; */
+  border-collapse: collapse;
+  font-size: 18px;
+}
+
+.ranking th, .ranking td {
+  /* border: 1px solid #343a40; */
+  padding: 16px 24px;
+  text-align: left;
+}
+
+.ranking thead th {
+  background-color: #087f5b;
+  color: #fff;
+  width: 25%;
+}
+
+.ranking tbody tr:nth-child(even) {
+  background-color: #000000;
+}
+
+.ranking tbody tr:nth-child(odd) {
+  background-color: #181818;
+}
