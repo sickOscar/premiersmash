@@ -4,7 +4,7 @@ import {getClientIp} from 'request-ip';
 import {promisify} from "util";
 import {getCookie} from "cookies-next";
 
-import * as Pool from 'pg-pool';
+const Pool = require('pg-pool');
 const client = new Pool({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
@@ -12,8 +12,6 @@ const client = new Pool({
   password: process.env.PGPASSWORD,
   port: parseInt(process.env.PGPORT as string),
 })
-
-
 
 export default async function handler(
   req: NextApiRequest,
