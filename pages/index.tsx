@@ -169,7 +169,18 @@ const premiers: Premier[] = [
     id: 39,
     name: "Il drago Smaug",
     image: "https://upload.wikimedia.org/wikipedia/it/a/a6/Smaug.png"
+  },
+  {
+    id: 40,
+    name: "Maurizio Gasparri",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Murizio_Gasparri_datisenato_2018.jpg"
+  },
+  {
+    id: 41,
+    name: "Daniela Santanchè",
+    image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Daniela_Santanch%C3%A8_datisenato_2018.jpg"
   }
+
 ]
 
 interface PollResult {
@@ -559,10 +570,10 @@ const Home: NextPage = () => {
           <div className={styles.progress}>
             <div className={styles.progressContainer}>
 
-              <p className={styles.numberOfVotes}>
-                {pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0)}
-                {pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0) !== 1 ? ` voti` : ` voto`}
-              </p>
+              {/*<p className={styles.numberOfVotes}>*/}
+              {/*  {pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0)}*/}
+              {/*  {pollResult.votesFor1 + (fixedChoiceIndex === 0 ? 1 : 0) !== 1 ? ` voti` : ` voto`}*/}
+              {/*</p>*/}
               <div className={styles.progressBox} ref={refVoteOne} style={{
                 backgroundColor: `rgba(0, 146, 70, 0.7)`,
                 right: 0
@@ -576,10 +587,10 @@ const Home: NextPage = () => {
             }}></div>
             <div className={styles.progressContainer}>
 
-              <p className={styles.numberOfVotes}>
-                {pollResult.votesFor2 + (fixedChoiceIndex === 1 ? 1 : 0)}
-                {pollResult.votesFor2 + (fixedChoiceIndex === 1 ? 1 : 0) !== 1 ? ` voti` : ` voto`}
-              </p>
+              {/*<p className={styles.numberOfVotes}>*/}
+              {/*  {pollResult.votesFor2 + (fixedChoiceIndex === 1 ? 1 : 0)}*/}
+              {/*  {pollResult.votesFor2 + (fixedChoiceIndex === 1 ? 1 : 0) !== 1 ? ` voti` : ` voto`}*/}
+              {/*</p>*/}
               <div className={styles.progressBox} ref={refVoteTwo} style={{
                 backgroundColor: `rgba(206, 43, 55, 0.7)`,
               }}>

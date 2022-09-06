@@ -59,12 +59,7 @@ export async function getServerSideProps() {
   `
   const resLosers = await client.query(sqlLosers);
 
-  console.log(`resWinners.rows[0]`, resWinners.rows[0])
-  console.log(`resLosers.rows[0]`, resLosers.rows[0])
-
   const data = resWinners.rows.map(({winner, wins}, i) => {
-
-    console.log(`winner`, winner)
 
     const loserResult = resLosers.rows.find(({loser, losses}) => {
         return loser === winner;
@@ -74,7 +69,6 @@ export async function getServerSideProps() {
     }
 
     const { loser, losses } = loserResult;
-
 
     return {
       candidate: winner,
