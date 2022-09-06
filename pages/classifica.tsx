@@ -1,5 +1,4 @@
 import client from "../lib/db";
-import {inspect} from "util";
 import styles from '../styles/Ranking.module.css'
 import Link from "next/link";
 import Head from "next/head";
@@ -9,7 +8,6 @@ function Classifica({ data }:{ data: any[] }) {
     <>
       <Head>
         <title>Classifica</title>
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
       </Head>
       <div className={styles.ranking}>
         <div style={{
@@ -18,16 +16,9 @@ function Classifica({ data }:{ data: any[] }) {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-          <Link href={"/"}> &lt;- Premier2022</Link>
+          <a className={styles.backbutton} href={"/"}> 🠸 </a>
           <h1 className={styles.title}>Classifica</h1>
-          <div>
-            <a className="github-button"
-               href="https://github.com/sickOscar/premiersmash"
-               data-color-scheme="no-preference: light; light: light; dark: dark;"
-               data-icon="octicon-star" aria-label="Star sickOscar/premiersmash on GitHub">
-              Star
-            </a>
-          </div>
+          <div></div>
         </div>
         <table>
           <thead>

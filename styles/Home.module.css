@@ -58,6 +58,12 @@
   align-items: center;
 }
 
+.backbutton {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
 
 .matchWinner {
   display: block;

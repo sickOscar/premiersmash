@@ -425,6 +425,13 @@ const Home: NextPage = () => {
 
   }
 
+  const reload = () => {
+    setGameStarted(false);
+    setSelectionDone(false);
+    setGameEnded(0);
+    setExcluded([]);
+  }
+
   const updateRoute = (first: Premier, second: Premier) => {
     if (!first || !second) {
       return;
@@ -521,7 +528,17 @@ const Home: NextPage = () => {
 
       {gameStarted && !gameEnded && <>
         <div className={styles.gameHeader}>
-          <p>Clicca e scegli il PRIMO MINISTRO </p>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+            <button className={styles.backbutton} onClick={reload}> 🠸 </button>
+            <p>Clicca e scegli il PRIMO MINISTRO </p>
+            <div></div>
+          </div>
+
           <div className={styles.gameProgressContainer}>
             <div className={styles.gameProgress} ref={refGameProgress}></div>
           </div>

@@ -35,3 +35,10 @@
 .ranking tbody tr:nth-child(odd) {
   background-color: #181818;
 }
+
+.backbutton {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
