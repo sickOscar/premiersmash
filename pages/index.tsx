@@ -511,6 +511,9 @@ const Home: NextPage = () => {
           }}>
             Gioca ancora
           </button>
+          <p>
+            <Link href={'/classifica'}>Vedi i risultati</Link>
+          </p>
 
 
         </div>

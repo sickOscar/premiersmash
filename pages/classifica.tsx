@@ -1,33 +1,58 @@
 import client from "../lib/db";
 import {inspect} from "util";
 import styles from '../styles/Ranking.module.css'
+import Link from "next/link";
+import Head from "next/head";
 
 function Classifica({ data }:{ data: any[] }) {
   return (
-    <div className={styles.ranking}>
-      <h1 className={styles.title}>Classifica</h1>
-      <table>
-        <thead>
+    <>
+      <Head>
+        <title>Classifica</title>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+      </Head>
+      <div className={styles.ranking}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <Link href={"/"}> &lt;- Premier2022</Link>
+          <h1 className={styles.title}>Classifica</h1>
+          <div>
+            <a className="github-button"
+               href="https://github.com/sickOscar/premiersmash"
+               data-color-scheme="no-preference: light; light: light; dark: dark;"
+               data-icon="octicon-star" aria-label="Star sickOscar/premiersmash on GitHub">
+              Star
+            </a>
+          </div>
+        </div>
+        <table>
+          <thead>
           <tr>
             <th>#</th>
             <th>Nome</th>
             <th>Percentuale di vittorie dirette</th>
           </tr>
-        </thead>
-        <tbody>
-        {data.map((item,i) => (
-          <tr key={i}>
-            <td className={styles.position}>{item.position}</td>
-            <td>{item.candidate}</td>
-            {/*<td>{item.total}</td>*/}
-            {/*<td>{item.wins}</td>*/}
-            {/*<td>{item.losses}</td>*/}
-            <td>{item.percentage}%</td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+          {data.map((item,i) => (
+            <tr key={i}>
+              <td className={styles.position}>{item.position}</td>
+              <td>{item.candidate}</td>
+              {/*<td>{item.total}</td>*/}
+              {/*<td>{item.wins}</td>*/}
+              {/*<td>{item.losses}</td>*/}
+              <td>{item.percentage}%</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+
   );
 }
 

@@ -10,7 +10,7 @@
 }
 
 .ranking table {
-  margin-top: 40px;
+  margin: 40px auto;
   /* border: 1px solid #343a40; */
   border-collapse: collapse;
   font-size: 18px;
