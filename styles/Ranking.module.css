@@ -9,6 +9,27 @@
   text-align: center;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.header > div {
+  width: 100%;
+}
+
+.titleBox {
+  text-align: center;
+}
+
+.linkBox {
+  text-align: right;
+  margin-right: 20px;
+}
+
 .ranking table {
   margin: 40px auto;
   /* border: 1px solid #343a40; */
@@ -25,7 +46,7 @@
 .ranking thead th {
   background-color: #087f5b;
   color: #fff;
-  width: 25%;
+  /*width: 25%;*/
 }
 
 .ranking tbody tr:nth-child(even) {
@@ -41,4 +62,25 @@
   background-color: transparent;
   border: none;
   color: #fff;
+}
+
+.title {
+  padding-left: 20px;
+  background-image: linear-gradient(120deg, rgb(0, 146, 70), #fff, rgb(206, 43, 55));
+  background-size: 150%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: animated-gradient 5s ease-in-out infinite;
+}
+
+@keyframes animated-gradient {
+  0%,
+  100% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }

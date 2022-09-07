@@ -2,24 +2,43 @@ import client from "../lib/db";
 import styles from '../styles/Ranking.module.css'
 import Link from "next/link";
 import Head from "next/head";
+import React from "react";
 
-function Classifica({ data }:{ data: any[] }) {
+function Classifica({data, total}: { data: any[], total:number }) {
   return (
     <>
       <Head>
         <title>Classifica</title>
       </Head>
       <div className={styles.ranking}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-          <a className={styles.backbutton} href={"/"}> 🠸 </a>
-          <h1 className={styles.title}>Classifica</h1>
-          <div></div>
+        <header className={styles.header} >
+          <div>
+            <a className={styles.title} href={"/"}>
+              Premier2022
+            </a>
+          </div>
+
+          <div className={styles.linkBox}>
+            <a className="twitter-share-button"
+               href={`https://twitter.com/intent/tweet?text=Gli italiani stanno scegliedo il prossimo premier. Vieni a votare anche tu!&url=https://www.premier2022.it`}
+               target="_blank"
+               rel="noreferrer"
+            >
+              <img src="/twitter.svg" alt="twitter" style={{
+                width: `20px`,
+                height: `20px`
+              }}/>
+            </a>
+          </div>
+        </header>
+        <div className={styles.titleBox}>
+          <h1>Classifica</h1>
         </div>
+
+        <p style={{textAlign: 'center'}}>
+          Gli italiani hanno esercitato la sovranità democratica <br /><em style={{fontSize: "2em"}}>{total}</em> volte
+        </p>
+
         <table>
           <thead>
           <tr>
@@ -29,7 +48,7 @@ function Classifica({ data }:{ data: any[] }) {
           </tr>
           </thead>
           <tbody>
-          {data.map((item,i) => (
+          {data.map((item, i) => (
             <tr key={i}>
               <td className={styles.position}>{item.position}</td>
               <td>{item.candidate}</td>
@@ -75,16 +94,24 @@ export async function getServerSideProps() {
   `
   const resLosers = await client.query(sqlLosers);
 
+  const sqlTotal = `
+    SELECT COUNT(*) as total
+    FROM votes
+    `;
+  const totalQuery = await client.query(sqlTotal);
+  const total = totalQuery.rows[0].total;
+
+
   const data = resWinners.rows.map(({winner, wins}, i) => {
 
     const loserResult = resLosers.rows.find(({loser, losses}) => {
-        return loser === winner;
+      return loser === winner;
     })
     if (!loserResult) {
       return null;
     }
 
-    const { loser, losses } = loserResult;
+    const {loser, losses} = loserResult;
 
     return {
       candidate: winner,
@@ -111,6 +138,7 @@ export async function getServerSideProps() {
   return {
     props: {
       data,
+      total
     },
   }
 }

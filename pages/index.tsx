@@ -237,7 +237,7 @@ const Home: NextPage = () => {
         setPollResult(data);
       })
       .catch(err => {
-        alert(err)
+        console.log(err)
       })
   }
 
@@ -281,7 +281,7 @@ const Home: NextPage = () => {
     setFixedChoiceIndex(0);
 
     saveVote(choices[0], choices[1])
-      .catch(alert)
+      .catch(console.log)
 
     const newRandom = pickRandomPremier([]);
     if (newRandom) {
@@ -313,7 +313,7 @@ const Home: NextPage = () => {
     setFixedChoiceIndex(1);
 
     saveVote(choices[1], choices[0])
-      .catch(alert)
+      .catch(console.log)
 
     const newRandom = pickRandomPremier([]);
     if (newRandom) {
