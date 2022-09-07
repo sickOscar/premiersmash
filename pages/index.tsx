@@ -87,7 +87,7 @@ const premiers: Premier[] = [
   },
   {
     id: 16,
-    name: "Sara Cuinal",
+    name: "Sara Cunial",
     image: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Sara_Cunial_2018.jpg",
   },
   {
