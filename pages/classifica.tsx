@@ -36,7 +36,7 @@ function Classifica({data, total}: { data: any[], total:number }) {
         </div>
 
         <p style={{textAlign: 'center'}}>
-          Gli italiani hanno esercitato la sovranità democratica <br /><em style={{fontSize: "2em"}}>{total}</em> volte
+          Gli italiani hanno esercitato la sovranità democratica <em style={{fontSize: "2em"}}>{total}</em> volte
         </p>
 
         <table>
